@@ -9,14 +9,6 @@ package pennergame;
  *
  * @author Simon-Larcher
  */
-public class Pennergame {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Haus h1 = new Haus();
-        h1.menu();
-    }
+public class Schutz {
     
 }
