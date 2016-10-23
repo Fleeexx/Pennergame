@@ -20,25 +20,12 @@ public class Penner {
     public Penner(String name)
     {
         this.name = name;
-        hp = 500;
+        hp = 50;
         level = 1;
         xp = 0;
     }
     
-    public Penner(String name, int hp, int level, int xp)
-    {
-        this.name = name;
-        this.hp = hp;
-        this.level = level;
-        this.xp = xp;
-    }
-    
-    
-    private void neuSchutz()
-    {
-        
-    }
-    private void minusSchutz()
+    public void showPennerStats()
     {
         
     }

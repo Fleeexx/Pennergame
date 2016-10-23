@@ -7,16 +7,8 @@ package pennergame;
 
 /**
  *
- * @author Simon-Larcher
+ * @author Felix
  */
-public class Pennergame {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Haus home = new Haus();
-        home.menu();
-    }
+public class Angriff {
     
 }
