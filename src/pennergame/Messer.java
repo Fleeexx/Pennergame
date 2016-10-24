@@ -7,8 +7,12 @@ package pennergame;
 
 /**
  *
- * @author Felix
+ * @author Simon-Larcher
  */
-public class Angriff {
+public class Messer extends Waffe{
     
+    
+    public Messer(String name, int kosten, double grundDamage, int lvl){
+        super(name,kosten,grundDamage,lvl);
+    }
 }
