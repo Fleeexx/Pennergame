@@ -55,7 +55,7 @@ public class Haus {
         if (penner == null)
         {
             System.out.println("Erste Erstellung");
-            penner = new Penner("Spast");
+            penner = new Penner("Spasfdnaskldfjasklt");
         }
         else
         {
