@@ -5,6 +5,8 @@
  */
 package pennergame;
 
+import java.util.Vector;
+
 /**
  *
  * @author Simon-Larcher
@@ -15,6 +17,7 @@ public class Penner {
     private int hp;
     private int level;
     private int xp;
+    private Vector inventar = new Vector();
 
 
     public Penner(String name)
@@ -26,6 +29,11 @@ public class Penner {
     }
     
     public void showPennerStats()
+    {
+        //Zeige alle Stats
+    }
+    
+    public void showInventar()
     {
         
     }
@@ -63,6 +71,19 @@ public class Penner {
     public void setXp(int xp) {
         this.xp = xp;
     }
-    
+
+    /**
+     * @return the inventar
+     */
+    public Vector getInventar() {
+        return inventar;
+    }
+
+    /**
+     * @param inventar the inventar to set
+     */
+    public void setInventar(Vector inventar) {
+        this.inventar = inventar;
+    }
     
 }

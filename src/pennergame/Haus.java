@@ -17,13 +17,18 @@ public class Haus {
     private Penner penner;
     private Read read;
     
+    // Shop-Shit
+    
+    // Do werd jeweils oan verfügbars Woffenobjekt deklariert welches donn noch jedem Kompf editiert werd
+    
 
     public Haus()
     {
         read = new Read();
     }
     
-    public void menu(){
+    public void menu()
+    {
         
         pennerprofil();
         
@@ -51,7 +56,8 @@ public class Haus {
         } while (r);
     }
     
-    private void pennerprofil(){
+    private void pennerprofil()
+    {
         
         if (penner == null)
         {
@@ -60,7 +66,9 @@ public class Haus {
             penner = new Penner(eingabe);
             System.out.printf("Alles klar! Du heisst also %s.\nWir haben fuer dich schon mal ein Profil bei uns erstellt.\n", penner.getName());
             penner.showPennerStats();
-            System.out.print("Nachdem du jetzt bei uns wohnst hast du auch Aufgaben die du erfuellen musst!\nNun, da du relativ stark aussiehst wirst du unser Haus verteidigen!\nAusruestung bekomsmt du in unserem Shop.\nSobald du ");
+            System.out.println("Hier bekommst du ein paar Pfandflaschen (10). Pfandflaschen(PF) sind unsere Waehrug.\nDu kannst sie gegen Ausruestung im Shop eintauschen.");   
+            shop();
+            System.out.println();
         }
         else
         {
@@ -69,22 +77,35 @@ public class Haus {
         
     }
     
-    private void shop(){
-        System.out.print("[1] Waffen\n[2] Schutz\n[3] Zurück\nEingabe: ");
-        int eingabe = read.zahl();
-        if (eingabe == 1)
+    private void shop()
+    {
+        Boolean r = true;
+        do
         {
-            
-        }
-        else if(eingabe == 2)
-        {
-            
-        }
-        else
-        {
-            
-        }
-        
+            System.out.print("[1] Waffen\n[2] Schutz\n[3] Zurück\nEingabe: ");
+            int eingabe = read.zahl();
+            if (eingabe == 1)
+            {
+                System.out.println("[0] Spezialangebote\n[1] Messer\nEingabe:");
+                eingabe = read.zahl();
+                if (eingabe == 0)
+                {
+                    
+                }
+                else if (eingabe == 1)
+                {
+                    
+                }
+            }
+            else if(eingabe == 2)
+            {
+                System.out.println("Coming soon...");
+            }
+            else
+            {
+                r = false;
+            }
+        } while (r);
     }
     
     
