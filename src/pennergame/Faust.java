@@ -10,14 +10,9 @@ package pennergame;
  * @author Andere
  */
 public class Faust extends Waffe{
-    
-    private Attacke a1 = new Attacke("Betonschelle", 0.8, 0);
-    private Attacke a2 = new Attacke("Pussyschlag", 1, -0.3);
-    private Attacke a3 = new Attacke("Zermetzler", 1, 3);
-    
-    
+
     public Faust(String name, int kosten, double grundDamage, int lvl){
-        super(name,kosten,grundDamage,lvl,a1,a2,a3);
+        super(name,kosten,grundDamage,lvl,new Attacke("Betonschelle", 0.8, 0),new Attacke("Pussyschlag", 1, -0.3),new Attacke("Zermetzler", 1, 3));   
     }
 //    @Override
 //    public double getDamage1(){   //80%treffersicherheit    normalschaden

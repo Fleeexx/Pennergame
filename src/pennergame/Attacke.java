@@ -72,23 +72,39 @@ public class Attacke {
           }
           damage = rnd(damage); // toleranz vom effektifen damage 
           return damage;
-      }
+      }*/
     
-    public double getDamege(double damage){ 
-          
-          int rnd = rnd(100);
-          if (rnd < (genauigkeit * 100){ //getroffen
-              damage = damage + (damage * zusatzschaden);
-          else{ //verfehlt
-              damage = 0; 
+        public double getSpezialschaden(double damage){ //mit spezialschaden 
+            // lokale variable in klasse Kampf für spezialschadenbekommen und spezialschadenProzent 
+            int rnd = rnd(100);
+            if (rnd < (genauigkeit * 100){ //getroffen
+                damage = damage + (damage * zusatzschaden);
+                if(spezialschadenbekommen){
+                    if(spezialschadenProzent > 0){
+                    oldDamage = oldDamage + (oldDamage * spezialschadenProzenr);
+                    spezialschadenProzent = spezialschadenProzent + multiplikator;
+                    }
+                    else{
+                    spezialschadenProzent = spezialschaden;
+                    damage = damage + oldDamage;
+                    }
+                }
+                if (!spezialschadenbekommen && spezialschadenProzent > 0){
+                    oldDamage = oldDamage + (oldDamage * spezialschadenProzenr);
+                    damage = damage + oldDamage;
+                }
+             }        
+            else{ //verfehlt
+                damage = 0; 
+            }
+            spezialschadenbekommen = false;  
+              damage = rnd(damage); // toleranz vom effektifen damage 
+              return damage;
           }
-          damage = rnd(damage); // toleranz vom effektifen damage 
-          return damage;
-      }
     
     
     
     
     
-    */
+    
 }

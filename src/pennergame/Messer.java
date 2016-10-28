@@ -19,7 +19,8 @@ public class Messer extends Waffe{
     private Attacke a4 = new Attacke("Puls Aufschneiden", 1, 3);
     
     public Messer(String name, int kosten, double grundDamage, int lvl){
-        super(name,kosten,grundDamage,lvl,a1,a2,a3,a4);   
+        super(name, kosten, grundDamage, lvl, new Attacke("Werfen", 0.4, 0.8), new Attacke("Schlitzen", 0.7, -0.3, "Schnittwunde", 0.1, 0.04)
+                , new Attacke("Stich", 1, -0.1), new Attacke("Puls Aufschneiden", 1, 3));
     }
 //    @Override
 //    public double getDamage1(){   //60% verfehlen   //80%mehr Schaden
