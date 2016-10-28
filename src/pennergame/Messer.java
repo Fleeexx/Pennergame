@@ -14,14 +14,12 @@ public class Messer extends Waffe{
     
     private double langzeitSchaden;
     private Attacke a1 = new Attacke("Werfen", 0.4, 0.8);
-    private Attacke a2 = new Attacke("Schlitzen", 0.7, 0, "Schnittwunde", 0.1, 0,04);
-    private Attacke a3 = new Attacke("Stich", -0.1, 0);
-    private Attacke a4 = new Attacke("Puls Aufschneiden", 300, 0);
+    private Attacke a2 = new Attacke("Schlitzen", 0.7, -0.3, "Schnittwunde", 0.1, 0.04);
+    private Attacke a3 = new Attacke("Stich", 1, -0.1);
+    private Attacke a4 = new Attacke("Puls Aufschneiden", 1, 3);
     
     public Messer(String name, int kosten, double grundDamage, int lvl){
-        super(name,kosten,grundDamage,lvl);
-        String[] attake = {"Messerwurf", "Schlitzen", "Stich", "Spetzialattake"};
-        
+        super(name,kosten,grundDamage,lvl,a1,a2,a3,a4);   
     }
 //    @Override
 //    public double getDamage1(){   //60% verfehlen   //80%mehr Schaden
