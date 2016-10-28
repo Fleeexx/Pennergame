@@ -14,10 +14,15 @@ import java.util.Vector;
  */
 public class Haus {
     
+    // Objekte
+    
     private Penner penner;
     private Read read;
     
     // Shop-Shit
+    
+    private Faust shop_faust;
+    private Messer shop_messer;
     
     // Do werd jeweils oan verfügbars Woffenobjekt deklariert welches donn noch jedem Kompf editiert werd
     
@@ -35,6 +40,13 @@ public class Haus {
         Boolean r = true;
         
         do {
+            
+            // Shop-Shit
+            
+            shop_faust = new Faust("Betonwatsche", 10, 10, 1);
+            
+            // Menü
+            
             System.out.println("[1] Mein Penner\n[2] Shop\n[3] Kämpfen\n[0] Exit\nEingabe: ");
             int eingabe = read.zahl();
             if (eingabe == 1) // Mein Penner
@@ -66,7 +78,7 @@ public class Haus {
             penner = new Penner(eingabe);
             System.out.printf("Alles klar! Du heisst also %s.\nWir haben fuer dich schon mal ein Profil bei uns erstellt.\n", penner.getName());
             penner.showPennerStats();
-            System.out.println("Hier bekommst du ein paar Pfandflaschen (10). Pfandflaschen(PF) sind unsere Waehrug.\nDu kannst sie gegen Ausruestung im Shop eintauschen.");   
+            System.out.println("Hier bekommst du ein paar Pfandflaschen (10). Pfandflaschen(PF) sind unsere Waehrug.\nDu kannst sie gegen Ausruestung im Shop eintauschen.\n\nAlles klar, das waere nun geklaert. Damit du nun aber kaempfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Spezialangebote)");   
             shop();
             System.out.println();
         }
@@ -90,7 +102,7 @@ public class Haus {
                 eingabe = read.zahl();
                 if (eingabe == 0)
                 {
-                    
+                    if ()
                 }
                 else if (eingabe == 1)
                 {

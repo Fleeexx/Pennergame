@@ -22,12 +22,58 @@ public class Waffe {
     
     private Vector attacken = new Vector();
     
-    public Waffe(String name, int kosten, double grundDamage, int lvl){
+    // Konstruktoren
+    
+    public Waffe(String name, int kosten, double grundDamage, int lvl, Attacke a1){
         this.name = name;
         this.kosten = kosten;
         this.damage = grundDamage + (0.5 * lvl);
         this.lvl = lvl;
+        attacken.add(a1);
     }
+    
+    public Waffe(String name, int kosten, double grundDamage, int lvl, Attacke a1, Attacke a2){
+        this.name = name;
+        this.kosten = kosten;
+        this.damage = grundDamage + (0.5 * lvl);
+        this.lvl = lvl;
+        attacken.add(a1);
+        attacken.add(a2);
+    }
+    
+    public Waffe(String name, int kosten, double grundDamage, int lvl, Attacke a1, Attacke a2, Attacke a3){
+        this.name = name;
+        this.kosten = kosten;
+        this.damage = grundDamage + (0.5 * lvl);
+        this.lvl = lvl;
+        attacken.add(a1);
+        attacken.add(a2);
+        attacken.add(a3);
+    }
+    
+    public Waffe(String name, int kosten, double grundDamage, int lvl, Attacke a1, Attacke a2, Attacke a3, Attacke a4){
+        this.name = name;
+        this.kosten = kosten;
+        this.damage = grundDamage + (0.5 * lvl);
+        this.lvl = lvl;
+        attacken.add(a1);
+        attacken.add(a2);
+        attacken.add(a3);
+        attacken.add(a4);
+    }
+    
+    public Waffe(String name, int kosten, double grundDamage, int lvl, Attacke a1, Attacke a2, Attacke a3, Attacke a4, Attacke a5){
+        this.name = name;
+        this.kosten = kosten;
+        this.damage = grundDamage + (0.5 * lvl);
+        this.lvl = lvl;
+        attacken.add(a1);
+        attacken.add(a2);
+        attacken.add(a3);
+        attacken.add(a4);
+        attacken.add(a5);
+    }
+    
     public int rnd(int zahl){
         return getRnd().nextInt(zahl) + 1;
     }
