@@ -76,27 +76,11 @@ public class Waffe {
     
     public int rnd(int zahl){
         return getRnd().nextInt(zahl) + 1;
-    }
-    
-//    abstract public double getDamage1();
-//    abstract public double getDamage4();
-//    
-//    public double rnd(double zahl){
-//        /*
-//        double r = zahl + (zahl * 0.05), rnd; 
-//        zahl = zahl - (zahl * 0.05);
-//        this.rnd.double(r);
-//        while (rnd < zahl){
-//          this.rnd.double(r);  
-//        }
-//        */
-//        return zahl;
-//    }
-    
+    }   
     
     public void showWeaponStats()
     {
-        System.out.printf("\n|------------------------------|\nName: %s\nKosten: %d\nDamage: &f\n|------------------------------|\n", name, kosten, damage);
+        System.out.printf("\n|------------------------------|\nName: %s\nKosten: %d\nDamage: %f\n|------------------------------|\n", name, kosten, damage);
     }
     
     //getter und setter 

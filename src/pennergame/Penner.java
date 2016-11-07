@@ -17,8 +17,9 @@ public class Penner {
     private int hp;
     private int level;
     private int xp;
+    private int money;
     private Boolean spezialschadenBekomen;
-    private Vector inventar = new Vector();
+    private Vector<Waffe> inventar = new Vector();
 
 
     public Penner(String name)
@@ -31,12 +32,20 @@ public class Penner {
     
     public void showPennerStats()
     {
-        //Zeige alle Stats
+        System.out.printf("\n|------------------------------|\nName: %s\nLevel: %d\nXP: %d/100\nPF: %d\n|------------------------------|\n", name, level, xp, money);
+        showInventar();
     }
     
     public void showInventar()
     {
-        
+        System.out.print("\n|------------------------------|\n");
+        for (Waffe weapon : inventar)
+        {
+            System.out.printf("Name: %s\n", weapon.getName());
+            System.out.printf("Level: %d\n", weapon.getLvl());
+            System.out.printf("Damage: %f\n\n\n", weapon.getDamage());
+        }
+        System.out.print("\n|------------------------------|\n");
     }
     
     // GETTER & SETTER
@@ -72,19 +81,25 @@ public class Penner {
     public void setXp(int xp) {
         this.xp = xp;
     }
-
-    /**
-     * @return the inventar
-     */
+    
+    public int getMoney() {
+        return money;
+    }
+    
+    public void setMoney(int money) {
+        this.money = money;
+    }
+    
+    public void addMoney(int money) {
+        this.money += money;
+    }
+    
     public Vector getInventar() {
         return inventar;
     }
-
-    /**
-     * @param inventar the inventar to set
-     */
-    public void setInventar(Vector inventar) {
-        this.inventar = inventar;
+    
+    public void addInventar(Waffe o) {
+        inventar.add(o);
     }
     
 }
