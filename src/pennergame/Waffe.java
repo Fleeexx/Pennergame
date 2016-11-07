@@ -92,6 +92,13 @@ public class Waffe {
 //        */
 //        return zahl;
 //    }
+    
+    
+    public void showWeaponStats()
+    {
+        System.out.printf("\n|------------------------------|\nName: %s\nKosten: %d\nDamage: &f\n|------------------------------|\n", name, kosten, damage);
+    }
+    
     //getter und setter 
     public Random getRnd() {
         return rnd;

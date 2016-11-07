@@ -5,8 +5,6 @@
  */
 package pennergame;
 
-import java.util.Scanner;
-import java.util.Vector;
 
 /**
  *
@@ -43,9 +41,12 @@ public class Haus {
             
             // Shop-Shit
             
-            shop_faust = new Faust("Betonwatsche", 10, 10, 1);
+            shop_faust = new Faust("Betonwatsche", 10, 10, 1); // Instanzierung 
             
             // Menü
+            
+            if (penner == null)
+                pennerprofil();
             
             System.out.println("[1] Mein Penner\n[2] Shop\n[3] Kämpfen\n[0] Exit\nEingabe: ");
             int eingabe = read.zahl();
@@ -73,18 +74,18 @@ public class Haus {
         
         if (penner == null)
         {
-            System.out.print("Na da schau einer her!\nHallo und herzlich willkommen in unserem kleinen Huettchen. Du willst doch sicherlich hier wohnen oder?\nDamit du hier aber wohnen kannst musst du mir aber deinen Namen verraten.\n[Name] ");
+            System.out.print("Na da schau einer her!\nHallo und herzlich willkommen in unserem Unterschlupf!\nDu bist herzlich eingeladen bei uns zu bleiben da wir noch einige gute Kaempfer brauchen.\nVerraetst du mir deinen Namen?\n[Dein Name] ");
             String eingabe = read.zeichen();
             penner = new Penner(eingabe);
-            System.out.printf("Alles klar! Du heisst also %s.\nWir haben fuer dich schon mal ein Profil bei uns erstellt.\n", penner.getName());
+            System.out.printf("Alles klar! Du heisst also %s.\nMein Name ist uebrigens Guenther. Ich zeige dir wie hier alels bei uns funktioniert.\n", penner.getName());
             penner.showPennerStats();
-            System.out.println("Hier bekommst du ein paar Pfandflaschen (10). Pfandflaschen(PF) sind unsere Waehrug.\nDu kannst sie gegen Ausruestung im Shop eintauschen.\n\nAlles klar, das waere nun geklaert. Damit du nun aber kaempfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Spezialangebote)");   
+            System.out.println("Hier bekommst du erstmal ein paar Pfandflaschen (10). Pfandflaschen(PF) sind unsere Waehrug.\nDu kannst sie gegen Ausruestung im Shop eintauschen.\n\nDamit du nun aber kaempfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Spezialangebote)");   
             shop();
             System.out.println();
         }
         else
         {
-            System.out.println("Stammkunde");
+            penner.showPennerStats();
         }
         
     }
@@ -98,11 +99,12 @@ public class Haus {
             int eingabe = read.zahl();
             if (eingabe == 1)
             {
-                System.out.println("[0] Spezialangebote\n[1] Messer\nEingabe:");
+                System.out.println("[0] Faust\n[1] Messer\nEingabe:");
                 eingabe = read.zahl();
                 if (eingabe == 0)
                 {
-                    if ()
+                    shop_faust.showWeaponStats();
+                    System.out.println("");
                 }
                 else if (eingabe == 1)
                 {

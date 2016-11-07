@@ -17,6 +17,7 @@ public class Penner {
     private int hp;
     private int level;
     private int xp;
+    private Boolean spezialschadenBekomen;
     private Vector inventar = new Vector();
 
 
