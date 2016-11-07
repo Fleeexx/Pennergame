@@ -14,7 +14,7 @@ import java.util.Vector;
 public class Penner {
     
     private String name;
-    private int hp;
+    private double hp;
     private int level;
     private int xp;
     private int money;
@@ -32,20 +32,20 @@ public class Penner {
     
     public void showPennerStats()
     {
-        System.out.printf("\n|------------------------------|\nName: %s\nLevel: %d\nXP: %d/100\nPF: %d\n|------------------------------|\n", name, level, xp, money);
+        System.out.printf("\n|---------- Mein Penner ----------|\nName: %s\nLevel: %d\nXP: %d/100\nPF: %d\n|---------------------------------|\n", name, level, xp, money);
         showInventar();
     }
     
     public void showInventar()
     {
-        System.out.print("\n|------------------------------|\n");
-        for (Waffe weapon : inventar)
+        System.out.print("\n|----------- Inventory -----------|\n");
+        for (int i = 0; i < inventar.size(); i++)
         {
-            System.out.printf("Name: %s\n", weapon.getName());
-            System.out.printf("Level: %d\n", weapon.getLvl());
-            System.out.printf("Damage: %f\n\n\n", weapon.getDamage());
+            System.out.printf("(%d) Name: %s\n", i + 1,inventar.get(i).getName());
+            System.out.printf("(%d) Level: %d\n", i + 1,inventar.get(i).getLvl());
+            System.out.printf("(%d) Damage: %f\n\n\n", i + 1,inventar.get(i).getDamage());
         }
-        System.out.print("\n|------------------------------|\n");
+        System.out.print("\n|---------------------------------|\n");
     }
     
     // GETTER & SETTER
@@ -58,12 +58,16 @@ public class Penner {
         this.name = name;
     }
     
-    public int getHp() {
+    public double getHp() {
         return hp;
     }
     
-    public void setHp(int hp) {
+    public void setHp(double hp) {
         this.hp = hp;
+    }
+    
+    public void addHp(double hp) {
+        this.hp += hp;
     }
     
     public int getLevel() {
