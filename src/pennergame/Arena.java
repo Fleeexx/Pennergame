@@ -46,18 +46,18 @@ public class Arena {
         Boolean r = false;
         this.spieler = spieler;
         bot = new Penner(getRndName());
-        System.out.printf("\n|---------- Kampf-Arena ----------|\n\nEin wilder Penner namens %s ist aufgetaucht!\nBitte waehle eine Waffe mit der du kaempfen moechtest!\n");
+        System.out.printf("\n|---------- Kampf-Arena ----------|\n\nEin wilder Penner namens %s ist aufgetaucht!\nBitte waehle eine Waffe mit der du kaempfen moechtest!\n", bot.getName());
         spieler.showInventar();
         do {
             System.out.print("Eingabe: ");
             waffenslot = read.zahl() - 1;
-            if (waffenslot <= spieler.getInventar().size())
+            if (waffenslot <= spieler.getInventar().size() && waffenslot >= 0)
             {
                 r = true;
             }
         } while(r == false);
         spieler_waffe = (Waffe) spieler.getInventar().get(waffenslot);
-        System.out.printf("Waffe %s (Level: %d) ausgewaehlt!\nMach dich bereit fuer die erste Runde.\n", spieler_waffe.getName(), spieler_waffe.getLvl());
+        System.out.printf("Waffe %s (Level: %d) ausgewaehlt!\nMach dich bereit fuer die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
         bot_waffe = getWaffe(spieler_waffe);
         startFight();
     }
@@ -106,15 +106,18 @@ public class Arena {
     
     private void startFight()
     {
-        for (int i = 1; spieler.getHp() > 0 && bot.getHp() > 0; i++) {
-            System.out.printf("-------| Runde %d |-------\n\n", i);
-            System.out.printf("%s HP: %i\n%s HP: %i", spieler.getName(), spieler.getHp(), bot.getName(), bot.getHp());
+        for (int i = 1; spieler.getHp() > 0 && bot.getHp() > 0; i++)
+        {
+            System.out.printf("\n\n-------| Runde %d |-------\n\n", i);
+            System.out.printf("%ss HP: %f\n%ss HP: %f", spieler.getName(), spieler.getHp(), bot.getName(), bot.getHp());
             runde(i);
             
             // TO DOOOOOOOOOO
             
             
             // SPIELER AM ZUG ODER BOT AM ZUG; ANGRIFFSAUSWAHL; BOT-KI; SCHADENSBERECHNUNG!!
+            
+            // XP + Penner losst PF folln
         }
         
     }
@@ -125,26 +128,39 @@ public class Arena {
         if (runde % 2 != 0)
         {
             a = getPlayerAttacke();
+            bot.addHp(-10); // lei zun testen!!!!!!
+            //bot.addHp(getSpezialschaden(runde));
         }
         else
         {
-            
             a = getBotAttacke();
+            bot.addHp(-5); // TEST!!
         }
     }
     
-    private Attacke getPlayerAttakce()
+    private Attacke getPlayerAttacke()
     {
         System.out.println("\nMit welcher Attacke moechten Sie angreifen?");
-        spieler_waffe.//showAttack
+        spieler_waffe.showWeaponAttacks();
+        int attackenslot = -1;
+        Boolean r = false;
+        do {
+            System.out.print("Eingabe: ");
+            attackenslot = read.zahl() - 1;
+            if (attackenslot <= spieler_waffe.getAttacken().size() && attackenslot >= 0)
+            {
+                r = true;
+            }
+        } while(r == false);
+        return (Attacke) spieler_waffe.getAttacken().get(attackenslot);
     }
     
     private Attacke getBotAttacke()
     {
-        
+        return (Attacke) bot_waffe.getAttacken().get(rnd(bot_waffe.getAttacken().size() - 1));
     }
     
-    private void start(){
+    /*private void start(){
         while(leben[0] < 1 || leben[1] < 1){
             i = i + 1;
             if (i == 3){
@@ -168,9 +184,9 @@ public class Arena {
         }
         
         
-    }
+    }*/
     
-    public double getSpezialschaden(double damage){ //mit spezialschaden 
+    private double getSpezialschaden(double damage){ //mit spezialschaden 
             // lokale variable in klasse Kampf für spezialschadenbekommen und spezialschadenProzent 
 
             int rnd = rnd(100);

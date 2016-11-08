@@ -43,9 +43,9 @@ public class Penner {
         {
             System.out.printf("(%d) Name: %s\n", i + 1,inventar.get(i).getName());
             System.out.printf("(%d) Level: %d\n", i + 1,inventar.get(i).getLvl());
-            System.out.printf("(%d) Damage: %f\n\n\n", i + 1,inventar.get(i).getDamage());
+            System.out.printf("(%d) Damage: %f\n", i + 1,inventar.get(i).getDamage());
         }
-        System.out.print("\n|---------------------------------|\n");
+        System.out.print("|---------------------------------|\n");
     }
     
     // GETTER & SETTER

@@ -5,7 +5,6 @@
  */
 package pennergame;
 
-import java.util.Random;
 import java.util.Vector;
 
 /**
@@ -14,13 +13,12 @@ import java.util.Vector;
  */
 public class Waffe {
     
-    private Random rnd = new Random();
     private String name;
     private int kosten;
     private int lvl;
     private double damage;
     
-    private Vector attacken = new Vector();
+    private Vector<Attacke> attacken = new Vector();
     
     // Konstruktoren
     
@@ -73,23 +71,36 @@ public class Waffe {
         attacken.add(a4);
         attacken.add(a5);
     }
-    
-    public int rnd(int zahl){
-        return getRnd().nextInt(zahl) + 1;
-    }   
-    
+
     public void showWeaponStats()
     {
         System.out.printf("\n|------------------------------|\nName: %s\nKosten: %d\nDamage: %f\n|------------------------------|\n", name, kosten, damage);
     }
     
-    //getter und setter 
-    public Random getRnd() {
-        return rnd;
+    public void showWeaponAttacks()
+    {
+        System.out.print("\n|----------- Attacken -----------|\n");
+        for (int i = 0; i < attacken.size(); i++)
+        {
+            System.out.println("");
+            System.out.printf("(%d) Name: %s\n", i + 1,attacken.get(i).getName());
+            System.out.printf("(%d) Genauigkeit: %f\n", i + 1,attacken.get(i).getGenauigkeit());
+            System.out.printf("(%d) Damage: %f\n", i + 1,attacken.get(i).getZusatzschaden());
+            if (attacken.get(i).getSpezialschadenName() != null)
+            {
+                System.out.printf("(%d) Spezialschaden: %f\n", i + 1,attacken.get(i).getSpezialschadenName());
+                System.out.printf("(%d) Spezial-Damage: %f\n", i + 1,attacken.get(i).getSpezialschaden());
+            }
+            System.out.println("");
+        }
+        System.out.print("|---------------------------------|\n");
     }
-    public void setRnd(Random rnd) {
-        this.rnd = rnd;
+    
+    public Vector getAttacken()
+    {
+        return attacken;
     }
+    
     public String getName() {
         return name;
     }
