@@ -115,26 +115,42 @@ public class Arena {
             // TO DOOOOOOOOOO
             
             
-            // SPIELER AM ZUG ODER BOT AM ZUG; ANGRIFFSAUSWAHL; BOT-KI; SCHADENSBERECHNUNG!!
+            // SCHADENSBERECHNUNG!!
             
             // XP + Penner losst PF folln
         }
-        
+        int reward = (rnd(8) + 1) * 10;
+        //int xp = spieler.getLevel() * ;
+        if (bot.getHp() <= 0)
+        {
+            System.out.printf("%s wurde besiegt!\nDu erhaelst %d",bot.getName(), reward);
+            spieler.addMoney(reward);
+        }
+        else
+        {
+            System.out.printf("Du wurdest besiegt!\nDu verlierst waehrend du fluechtest %d PF.", reward / 2);
+            spieler.addMoney(reward / 2);
+        }
     }
     
     private void runde(int runde)
     {
         Attacke a;
+        double schaden;
         if (runde % 2 != 0)
         {
             a = getPlayerAttacke();
-            bot.addHp(-10); // lei zun testen!!!!!!
-            //bot.addHp(getSpezialschaden(runde));
+            schaden = -5; // getSpezialschaden(runde)
+            bot.addHp(schaden);
+            // Abfrage ob Schaden = 0 ==== verfehlt!
+            System.out.printf("Du hast %s eingesetzt.\nDie Attacke traf %s und richtete %f Schaden an.", a.getName(), bot.getName(), schaden * -1);
         }
         else
         {
             a = getBotAttacke();
-            bot.addHp(-5); // TEST!!
+            schaden = -10; // getSpezialschaden(runde)
+            spieler.addHp(schaden);
+            System.out.printf("%s hat %s eingesetzt.\nDie Attacke traf dich und richtete %f Schaden an.", bot.getName(), a.getName(), schaden * -1);
         }
     }
     
