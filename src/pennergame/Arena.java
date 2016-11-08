@@ -69,7 +69,7 @@ public class Arena {
             "Guenther",
             "Vladimir",
             "Vlad",
-            "Dennis",
+            "Rohrer",
             "Mustafa",
             "Reinhold",
             "Rizz",
@@ -86,7 +86,7 @@ public class Arena {
             "Gilette Abdi",
             "Murat",
             "Osama",
-            "Caesar"
+            "Smith"
         };
         return namen[rnd(namen.length - 1)];
     }
@@ -109,13 +109,38 @@ public class Arena {
         for (int i = 1; spieler.getHp() > 0 && bot.getHp() > 0; i++) {
             System.out.printf("-------| Runde %d |-------\n\n", i);
             System.out.printf("%s HP: %i\n%s HP: %i", spieler.getName(), spieler.getHp(), bot.getName(), bot.getHp());
-            
+            runde(i);
             
             // TO DOOOOOOOOOO
             
             
             // SPIELER AM ZUG ODER BOT AM ZUG; ANGRIFFSAUSWAHL; BOT-KI; SCHADENSBERECHNUNG!!
         }
+        
+    }
+    
+    private void runde(int runde)
+    {
+        Attacke a;
+        if (runde % 2 != 0)
+        {
+            a = getPlayerAttacke();
+        }
+        else
+        {
+            
+            a = getBotAttacke();
+        }
+    }
+    
+    private Attacke getPlayerAttakce()
+    {
+        System.out.println("\nMit welcher Attacke moechten Sie angreifen?");
+        spieler_waffe.//showAttack
+    }
+    
+    private Attacke getBotAttacke()
+    {
         
     }
     
