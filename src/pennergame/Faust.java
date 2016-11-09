@@ -12,7 +12,7 @@ package pennergame;
 public class Faust extends Waffe{
 
     public Faust(String name, int kosten, double grundDamage, int lvl){
-        super(name,kosten,grundDamage,lvl,new Attacke("Betonschelle", 0.8, 0),new Attacke("Pussyschlag", 1, -0.3),new Attacke("Zermetzler", 1, 3));   
+        super(name,kosten,grundDamage,lvl,new Attacke("Betonschelle", 0.8, 1),new Attacke("Pussyschlag", 1, 0.7),new Attacke("Zermetzler", 1, 3));   
     }
 
 

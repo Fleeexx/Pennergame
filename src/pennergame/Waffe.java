@@ -84,12 +84,12 @@ public class Waffe {
         {
             System.out.println("");
             System.out.printf("(%d) Name: %s\n", i + 1,attacken.get(i).getName());
-            System.out.printf("(%d) Genauigkeit: %f\n", i + 1,attacken.get(i).getGenauigkeit());
-            System.out.printf("(%d) Damage: %f\n", i + 1,attacken.get(i).getZusatzschaden());
+            System.out.printf("(%d) Genauigkeit: %f\n", i + 1,(attacken.get(i).getGenauigkeit() * 100));
+            System.out.printf("(%d) Damage: %f\n", i + 1,(attacken.get(i).getZusatzschaden()) * 100);
             if (attacken.get(i).getSpezialschadenName() != null)
             {
                 System.out.printf("(%d) Spezialschaden: %f\n", i + 1,attacken.get(i).getSpezialschadenName());
-                System.out.printf("(%d) Spezial-Damage: %f\n", i + 1,attacken.get(i).getSpezialschaden());
+                System.out.printf("(%d) Spezial-Damage: %f\n", i + 1,(attacken.get(i).getSpezialschaden()) * 100);
             }
             System.out.println("");
         }
