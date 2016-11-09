@@ -54,7 +54,25 @@ public class Arena {
         bot_waffe = getWaffe(spieler_waffe);
         startFight();
     }
-    
+    public void inizalizeFreizeitKampf(Penner spieler){
+        int waffenslot = -1;
+        Boolean r = false;
+        this.spieler = spieler;
+        bot = new Penner(getRndName());
+        spieler.showInventar();
+        do {
+            System.out.print("Eingabe: ");
+            waffenslot = read.zahl() - 1;
+            if (waffenslot <= spieler.getInventar().size() && waffenslot >= 0)
+            {
+                r = true;
+            }
+        } while(r == false);
+        spieler_waffe = (Waffe) spieler.getInventar().get(waffenslot);
+        System.out.printf("Waffe %s (Level: %d) ausgewaehlt!\nMach dich bereit fuer die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
+        bot_waffe = getWaffe(spieler_waffe);
+        startFight();
+    }
     private String getRndName()
     {
         String[] namen = {
@@ -133,7 +151,7 @@ public class Arena {
         else
         {
             System.out.printf("Du wurdest besiegt!\nDu verlierst waehrend du fluechtest %d PF.", reward / 2);
-            spieler.addMoney(reward / 2);
+            spieler.addMoney((reward / 2) * -1);
         }
     }
     
@@ -174,7 +192,7 @@ public class Arena {
             else
             {
                 System.out.printf("Hah! %s ist ausgerutscht und hat sich selbst verletzt.", bot.getName());
-                bot.addHp(-5);
+                bot.addHp(rnd(10) * -1);
             }
         }
     }
