@@ -16,7 +16,8 @@ public class Attacke {
     private double zusatzschaden; //Jede Attacke macht anderen Schaden von Grundschaden aus
     private String spezialschadenName; //Attackenname wie z.b. Schnittwunde oder Verbrennen
     private double spezialschaden; //Schaden von spezialschadenName
-    private double multiplikator; //Wenn man den spezialschaden noch einmal einsetzt    
+    private double multiplikator; //Wenn man den spezialschaden noch einmal einsetzt 
+    
     public Attacke(String name, double genauigkeit, double schaden)
     {
         this.name = name;
@@ -33,6 +34,7 @@ public class Attacke {
         this.spezialschadenName = spezialschadenName;
         this.spezialschaden = spezialschaden;
     }
+    
     public Attacke(String name, double genauigkeit, double zusatzschaden, String spezialschadenName, double spezialschaden, double multiplikator)
     {
         this.name = name;
@@ -58,6 +60,14 @@ public class Attacke {
     }
     public double getSpezialschaden() {
         return spezialschaden;
+    }
+    
+    public double getMultiplikator() {
+        return multiplikator;
+    }
+    
+    public void setMultiplikator() {
+        this.multiplikator = multiplikator;
     }
     /*
     

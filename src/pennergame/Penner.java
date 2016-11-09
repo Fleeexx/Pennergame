@@ -15,6 +15,7 @@ public class Penner {
     
     private String name;
     private double hp;
+    private double MAX_HP;
     private int level;
     private int xp;
     private int money;
@@ -25,8 +26,18 @@ public class Penner {
     public Penner(String name)
     {
         this.name = name;
-        hp = 50;
         level = 1;
+        MAX_HP = level * 0.25 * 400;
+        hp = MAX_HP;
+        xp = 0;
+    }
+    
+    public Penner(String name, int level)
+    {
+        this.name = name;
+        this.level = level;
+        MAX_HP = level * 0.25 * 400;
+        hp = MAX_HP;
         xp = 0;
     }
     
@@ -49,6 +60,16 @@ public class Penner {
     }
     
     // GETTER & SETTER
+    
+    public double getMAX_HP()
+    {
+        return MAX_HP;
+    }
+    
+    public void setMAX_HP()
+    {
+        this.MAX_HP = MAX_HP;
+    }
     
     public String getName() {
         return name;

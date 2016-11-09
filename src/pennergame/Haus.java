@@ -62,6 +62,7 @@ public class Haus {
             else if (eingabe == 3) // Arena
             {
                 kampf();
+                penner.setHp(50);
             }
             else if (eingabe == 0)
             {

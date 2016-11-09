@@ -21,16 +21,9 @@ public class Arena {
     private Waffe bot_waffe;
     
     private Random r = new Random();
-    private Scanner eingabe = new Scanner(System.in);
-    private boolean[] spezialschadenbekommen = new boolean [2];
+    private boolean[] spezialschadenbekommen = new boolean[2];
     private double[] oldDamage = new double[2];
-    private double[] spezialschadenProzent = new double[2];
-    private double[] leben = new double[2];
-    private String[][] name = new String[2][4];
-    private double[][] genauigkeit = new double[2][4];
-    private double[][] zusatzschaden = new double[2][4];
-    private double[][] multiplikator = new double[2][4];
-    private double[][] spezialschaden = new double[2][4];
+    private double[] spezialschaden = new double[2];
     private int i = -1, ii; // i = user     ii = kampfwahl
     
     
@@ -68,25 +61,38 @@ public class Arena {
             "Olaf",
             "Guenther",
             "Vladimir",
+            "Kuen Penner",
             "Vlad",
             "Rohrer",
+            "Kuen Penner",
             "Mustafa",
             "Reinhold",
             "Rizz",
             "Martl",
+            "Kuen Penner",
             "Hons",
             "Garbur",
+            "Kuen Penner",
             "Etl",
             "Trump",
+            "Kuen Penner",
             "Clinton",
             "Baruck Obuma",
             "Spodermen",
             "Luis Durnwalder",
+            "Kuen Penner",
             "Motschuner Peppn",
+            "Kuen Penner",
             "Gilette Abdi",
             "Murat",
             "Osama",
-            "Smith"
+            "Smith",
+            "Kuen Penner",
+            "Loop",
+            "Herr der Illuminaten",
+            "xX3Illuminati3Xx",
+            "Billiboy Gates",
+            "Kuen Penner"
         };
         return namen[rnd(namen.length - 1)];
     }
@@ -109,13 +115,11 @@ public class Arena {
         for (int i = 1; spieler.getHp() > 0 && bot.getHp() > 0; i++)
         {
             System.out.printf("\n\n-------| Runde %d |-------\n\n", i);
-            System.out.printf("%ss HP: %f\n%ss HP: %f", spieler.getName(), spieler.getHp(), bot.getName(), bot.getHp());
+            System.out.printf("%ss HP: %f\n%ss HP: %f\n\n", spieler.getName(), spieler.getHp(), bot.getName(), bot.getHp());
             runde(i);
             
             // TO DOOOOOOOOOO
             
-            
-            // SCHADENSBERECHNUNG!!
             
             // XP + Penner losst PF folln
         }
@@ -140,17 +144,38 @@ public class Arena {
         if (runde % 2 != 0)
         {
             a = getPlayerAttacke();
-            schaden = -5; // getSpezialschaden(runde)
+            if (a.getSpezialschaden() > 0)
+                spezialschadenbekommen[0] = true;
+            schaden = getSpezialschaden(a, spieler_waffe.getDamage(), 0);
             bot.addHp(schaden);
             // Abfrage ob Schaden = 0 ==== verfehlt!
-            System.out.printf("Du hast %s eingesetzt.\nDie Attacke traf %s und richtete %f Schaden an.", a.getName(), bot.getName(), schaden * -1);
+            System.out.printf("Du hast %s eingesetzt.\n", a.getName());
+            if (schaden > 0)
+            {
+                System.out.printf("Die Attacke traf %s und richtete %f Schaden an.", bot.getName(), schaden * -1);
+            }
+            else
+            {
+                System.out.println("Hoppla! Du hast nicht getroffen.");
+            }
         }
         else
         {
             a = getBotAttacke();
-            schaden = -10; // getSpezialschaden(runde)
+            if (a.getSpezialschaden() > 0)
+                spezialschadenbekommen[1] = true;
+            schaden = getSpezialschaden(a, bot_waffe.getDamage(), 1);
             spieler.addHp(schaden);
-            System.out.printf("%s hat %s eingesetzt.\nDie Attacke traf dich und richtete %f Schaden an.", bot.getName(), a.getName(), schaden * -1);
+            System.out.printf("%s hat %s eingesetzt.\n", bot.getName(), a.getName());
+            if (schaden > 0)
+            {
+                System.out.printf("Die Attacke traf dich und richtete %f Schaden an.", schaden * -1);
+            }
+            else
+            {
+                System.out.println("Hah! %s ist ausgerutscht und hat sich selbst verletzt.");
+                bot.addHp(-5);
+            }
         }
     }
     
@@ -176,59 +201,34 @@ public class Arena {
         return (Attacke) bot_waffe.getAttacken().get(rnd(bot_waffe.getAttacken().size() - 1));
     }
     
-    /*private void start(){
-        while(leben[0] < 1 || leben[1] < 1){
-            i = i + 1;
-            if (i == 3){
-                i = 1;
-            }
-            for (int x = 0; x < 4; x++){
-                if (name[i][x] != null){ 
-                }
-                else {
-                    System.out.printf("[%d] %s", x, name[i][x]);
-                }
-            }
-            System.out.print("Eingabe: ");
-            ii = eingabe.nextInt();
-            if(i == 0){
-                leben[1] = leben[1] - getSpezialschaden(10);
-            } 
-            else{
-                leben[0] = leben[0] - getSpezialschaden(10);
-            }
-        }
-        
-        
-    }*/
-    
-    private double getSpezialschaden(double damage){ //mit spezialschaden 
+    private double getSpezialschaden(Attacke a, double damage, int i){ //mit spezialschaden 
             // lokale variable in klasse Kampf für spezialschadenbekommen und spezialschadenProzent 
-
+            
             int rnd = rnd(100);
-            if (rnd < (genauigkeit[i][ii] * 100)){ //getroffen
-                damage = damage + (damage * zusatzschaden[i][ii]);
-                if(spezialschadenbekommen[i]){
-                    if(spezialschadenProzent[i] > 0){
-                    oldDamage[i] = oldDamage[i] + (oldDamage[i] * spezialschadenProzent[i]);
-                    spezialschadenProzent[i] = spezialschadenProzent[i] + multiplikator[i][ii];
+            if (rnd < (a.getGenauigkeit() * 100)){ //getroffen
+                damage = damage + (damage * a.getZusatzschaden());
+                if(spezialschadenbekommen[i]) {
+                    if(a.getSpezialschaden() > 0){
+                    oldDamage[i] = oldDamage[i] + (oldDamage[i] * spezialschaden[i]);
+                    spezialschaden[i] = spezialschaden[i] + a.getMultiplikator();
                     }
                     else{
-                    spezialschadenProzent[i] = spezialschaden[i][ii];
+                    spezialschaden[i] = a.getSpezialschaden();
                     damage = damage + oldDamage[i];
                     }
                 }
-                if (!spezialschadenbekommen[i] && spezialschadenProzent[i] > 0){
-                    oldDamage[i] = oldDamage[i] + (oldDamage[i] * spezialschadenProzent[i]);
+                else if (!spezialschadenbekommen[i] && spezialschaden[i] > 0) {
+                    oldDamage[i] = oldDamage[i] + (oldDamage[i] * spezialschaden[i]);
                     damage = damage + oldDamage[i];
                 }
-             }        
-            else{ //verfehlt
+            }        
+            else
+            { //verfehlt
                 damage = 0; 
             }
-            spezialschadenbekommen[i] = false;  
-              //damage = rnd(damage); // toleranz vom effektifen damage 
-              return damage;
+            spezialschadenbekommen[i] = false;
+            //damage = rnd(damage); // toleranz vom effektifen damage 
+            return damage * -1;
           }
     
     public int rnd(int i){
