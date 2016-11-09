@@ -20,6 +20,7 @@ class Pennerleben {
     
     private int zeit;
     private boolean pennerkampf;
+    private int pf;
         
     
     
@@ -34,23 +35,41 @@ class Pennerleben {
         System.out.print("|------------- Intro zuende ----------|\n\n\n");
     }
     public void start(){
-         
+         fragenWieLange();
+         sucheGehen();
     }
     public void fragenWieLange(){
         System.out.print("\n|----------- Pennerleben -----------|\n");
-        System.out.print("Wie lange bleibst du?\n[1] 1 Stunde\n[2] 2 Stunden\n[3] 5 Sunden\n[4] 10 Stunden\n");
-        zeit = read.zahl();
-        if(zeit == 1){
-            zeit = 1;
-        }
-        else if(zeit == 2){
-            zeit = 2;
-        }
-        else if(zeit == 3){
-            zeit = 5;
-        }
-        else{
-            zeit = 10;
+        boolean ende = false;
+        while (!ende)
+            System.out.print("Wie lange bleibst du?\n[1] 1 Stunde\n[2] 2 Stunden\n[3] 5 Sunden\n[4] 10 Stunden\n");
+            int zahl = read.zahl();
+            if(zeit == 1){
+                zeit = 1;
+                ende = true;
+            }
+            else if(zeit == 2){
+                zeit = 2;
+                ende = true;
+            }
+            else if(zeit == 3){
+                zeit = 5;
+                ende = true;
+            }
+            else{
+                zeit = 10;
+                ende = true;
+            }
+    }
+    public void sucheGehen(){
+        int flascheProStunde;
+        for(int i = 0; i < zeit; i++){
+            flascheProStunde = rnd(15);
+            System.out.printf("1. Stunde: %d!", flascheProStunde);
         }
     }
+    public int rnd(int i){
+        return r.nextInt() + 1;
+    }
+            
 }

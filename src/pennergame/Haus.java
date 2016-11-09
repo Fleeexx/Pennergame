@@ -50,7 +50,7 @@ public class Haus {
             if (penner == null)
                 pennerprofil();
             
-            System.out.println("\n\n[1] Mein Penner\n[2] Shop\n[3]Raus zu die Penner\n[4] Kämpfen\n[0] Exit\nEingabe: ");
+            System.out.println("\n\n[1] Mein Penner\n[2] Shop\n[3] Raus zu die Penner\n[4] Kämpfen\n[0] Exit\nEingabe: ");
             int eingabe = read.zahl();
             if (eingabe == 1) // Mein Penner
             {
