@@ -150,7 +150,7 @@ public class Arena {
             bot.addHp(schaden);
             // Abfrage ob Schaden = 0 ==== verfehlt!
             System.out.printf("Du hast %s eingesetzt.\n", a.getName());
-            if (schaden > 0)
+            if (schaden < 0)
             {
                 System.out.printf("Die Attacke traf %s und richtete %f Schaden an.", bot.getName(), schaden * -1);
             }

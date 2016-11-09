@@ -17,6 +17,7 @@ public class Haus {
     private Penner penner;
     private Read read;
     private Arena arena;
+    private Pennerleben leben;
     
     // Shop-Shit
     
@@ -49,7 +50,7 @@ public class Haus {
             if (penner == null)
                 pennerprofil();
             
-            System.out.println("\n\n[1] Mein Penner\n[2] Shop\n[3] Kämpfen\n[0] Exit\nEingabe: ");
+            System.out.println("\n\n[1] Mein Penner\n[2] Shop\n[3]Raus zu die Penner\n[4] Kämpfen\n[0] Exit\nEingabe: ");
             int eingabe = read.zahl();
             if (eingabe == 1) // Mein Penner
             {
@@ -59,7 +60,17 @@ public class Haus {
             {
                 shop();
             }
-            else if (eingabe == 3) // Arena
+            else if (eingabe == 3){
+                if (!penner.getFreizeitIntro()){
+                    leben = new Pennerleben(penner);
+                    leben.intro();
+                    penner.setFreizeitIntro(true);
+                }
+                else{
+                    leben.start();
+                }
+            }
+            else if (eingabe == 4) // Arena
             {
                 kampf();
                 penner.setHp(50);
