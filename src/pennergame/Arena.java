@@ -167,13 +167,13 @@ public class Arena {
             schaden = getSpezialschaden(a, bot_waffe.getDamage(), 1);
             spieler.addHp(schaden);
             System.out.printf("%s hat %s eingesetzt.\n", bot.getName(), a.getName());
-            if (schaden > 0)
+            if (schaden < 0)
             {
                 System.out.printf("Die Attacke traf dich und richtete %f Schaden an.", schaden * -1);
             }
             else
             {
-                System.out.println("Hah! %s ist ausgerutscht und hat sich selbst verletzt.");
+                System.out.printf("Hah! %s ist ausgerutscht und hat sich selbst verletzt.", bot.getName());
                 bot.addHp(-5);
             }
         }
@@ -221,10 +221,10 @@ public class Arena {
                     oldDamage[i] = oldDamage[i] + (oldDamage[i] * spezialschaden[i]);
                     damage = damage + oldDamage[i];
                 }
-            }        
+            }
             else
             { //verfehlt
-                damage = 0; 
+                damage = 0;
             }
             spezialschadenbekommen[i] = false;
             //damage = rnd(damage); // toleranz vom effektifen damage 

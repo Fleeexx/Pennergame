@@ -12,7 +12,7 @@ package pennergame;
 public class Messer extends Waffe{
     
     public Messer(String name, int kosten, double grundDamage, int lvl){
-        super(name, kosten, grundDamage, lvl, new Attacke("Werfen", 0.4, 0.8), new Attacke("Schlitzen", 0.7, 0.7, "Schnittwunde", 0.1, 0.04)
+        super(name, kosten, grundDamage, lvl, new Attacke("Werfen", 0.7, 1.5), new Attacke("Schlitzen", 0.4, 1.7, "Schnittwunde", 0.1, 0.04)
                 , new Attacke("Stich", 1, 0.9), new Attacke("Puls Aufschneiden", 1, 3));
     }
     
