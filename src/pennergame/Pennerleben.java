@@ -80,7 +80,7 @@ class Pennerleben {
         {
             fps = rnd(15);
             totalfps += fps;
-            if (rnd(10) == 1) // wenn 1 ist ist Kampf
+            if (rnd(10) == 1) // wenn rnd = 1 dann wird ein Kampf gestartet
             {
                 street = new Arena();
                 pennerKampf();
@@ -92,14 +92,17 @@ class Pennerleben {
         }
     }
     
-    public void pennerKampf(){    //wahl zwischen netten oder agressieven Penner
-        if (rnd(2) == 1){   //friedlicher Penner
-            friedlichePenner();
-            System.out.print("[1] JA\n[2] NEIN\n Eingabe: ");
+    // STREETFIGHT
+    
+    public void pennerKampf() //wahl zwischen netten oder agressieven Penner
+    {
+        if (rnd(2) == 1) //friedlicher Penner
+        {
+            //friedlichePenner();
+            System.out.print("[1] Ja\n[2] Nein\n Eingabe: ");
             int zahl = read.zahl();
             if (zahl == 1){    //angriff
-                penner.setHp(50);
-                street.inizalizeFreizeitKampf(penner); 
+                street.initializeFight(penner); 
             }
             else
             {
@@ -107,13 +110,12 @@ class Pennerleben {
             }
         }
         else{   //agressieve
-            aggressivePenner();
-            penner.setHp(50);
-            street.inizalizeFreizeitKampf(penner);    //Andere Methode weil das "ein wilder penner namens ..." nicht sein darf
+            //aggressivePenner();
+            street.initializeFight(penner);    //Andere Methode weil das "ein wilder penner namens ..." nicht sein darf
         }
     }
             
-    public String friedlichePenner(){
+    /*public String friedlichePenner(){
         String[] namen = {
             "Ein Penner namens Rizzolli nennt dich durchaus Geier! Willst du ihn angreifen oder gehen lassen?\n",  // ja = angreifen     nein = gehen
         };
@@ -127,7 +129,7 @@ class Pennerleben {
             "Du hast einen Penner kennengelernt der sich CostaGay nennt aber anderst heist. Wegen den Namen hast du ihn so sehr ausgelacht, dass er einen kampf auffordert!\n",
         };
         return namen[rnd(namen.length - 1)];
-    }
+    }*/
     
     /*public void nachHauseOderNicht(){
         System .out.printf("Du hast &d Pfandflaschen gefunden!\n willst du nach Hause gehen oder noch weiter rummluemmeln?\n[1] soffort nach Hause!\n[2] lieber noch ne Runde machen\nEingabe: ", pf);

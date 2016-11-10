@@ -39,7 +39,7 @@ public class Arena {
         Boolean r = false;
         this.spieler = spieler;
         bot = new Penner(getRndName());
-        System.out.printf("\n|---------- Kampf-Arena ----------|\n\nEin wilder Penner namens %s ist aufgetaucht!\nBitte waehle eine Waffe mit der du kaempfen moechtest!\n", bot.getName());
+        System.out.printf("\nEin wilder Penner namens %s ist aufgetaucht!\nBitte waehle eine Waffe mit der du kaempfen moechtest!\n", bot.getName());
         spieler.showInventar();
         do {
             System.out.print("Eingabe: ");
@@ -53,26 +53,9 @@ public class Arena {
         System.out.printf("Waffe %s (Level: %d) ausgewaehlt!\nMach dich bereit fuer die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
         bot_waffe = getWaffe(spieler_waffe);
         startFight();
+        spieler.setHp(50);
     }
-    public void inizalizeFreizeitKampf(Penner spieler){
-        int waffenslot = -1;
-        Boolean r = false;
-        this.spieler = spieler;
-        bot = new Penner(getRndName());
-        spieler.showInventar();
-        do {
-            System.out.print("Eingabe: ");
-            waffenslot = read.zahl() - 1;
-            if (waffenslot <= spieler.getInventar().size() && waffenslot >= 0)
-            {
-                r = true;
-            }
-        } while(r == false);
-        spieler_waffe = (Waffe) spieler.getInventar().get(waffenslot);
-        System.out.printf("Waffe %s (Level: %d) ausgewaehlt!\nMach dich bereit fuer die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
-        bot_waffe = getWaffe(spieler_waffe);
-        startFight();
-    }
+    
     private String getRndName()
     {
         String[] namen = {
@@ -145,12 +128,12 @@ public class Arena {
         //int xp = spieler.getLevel() * ;
         if (bot.getHp() <= 0)
         {
-            System.out.printf("%s wurde besiegt!\nDu erhaelst %d",bot.getName(), reward);
+            System.out.printf("\n%s wurde besiegt!\nDu erhaelst %d PF\n",bot.getName(), reward);
             spieler.addMoney(reward);
         }
         else
         {
-            System.out.printf("Du wurdest besiegt!\nDu verlierst waehrend du fluechtest %d PF.", reward / 2);
+            System.out.printf("\nDu wurdest besiegt!\nDu verlierst waehrend du fluechtest %d PF\n", reward / 2);
             spieler.addMoney((reward / 2) * -1);
         }
     }
@@ -170,7 +153,7 @@ public class Arena {
             System.out.printf("Du hast %s eingesetzt.\n", a.getName());
             if (schaden < 0)
             {
-                System.out.printf("Die Attacke traf %s und richtete %f Schaden an.", bot.getName(), schaden * -1);
+                System.out.printf("Die Attacke traf %s und richtete %.2f Schaden an.\n", bot.getName(), schaden * -1);
             }
             else
             {
@@ -187,7 +170,7 @@ public class Arena {
             System.out.printf("%s hat %s eingesetzt.\n", bot.getName(), a.getName());
             if (schaden < 0)
             {
-                System.out.printf("Die Attacke traf dich und richtete %f Schaden an.", schaden * -1);
+                System.out.printf("Die Attacke traf dich und richtete %.2f Schaden an.\n", schaden * -1);
             }
             else
             {

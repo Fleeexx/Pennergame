@@ -50,7 +50,7 @@ public class Haus {
             if (penner == null)
                 pennerprofil();
             
-            System.out.println("\n\n[1] Mein Penner\n[2] Shop\n[3] Raus zu die Penner\n[4] Kämpfen\n[0] Exit\nEingabe: ");
+            System.out.print("\n\n[1] Mein Penner\n[2] Shop\n[3] Raus zu die Penner\n[4] Kämpfen\n[0] Exit\nEingabe: ");
             int eingabe = read.zahl();
             if (eingabe == 1) // Mein Penner
             {
@@ -74,7 +74,6 @@ public class Haus {
             else if (eingabe == 4) // Arena
             {
                 kampf();
-                penner.setHp(50);
             }
             else if (eingabe == 0)
             {
@@ -166,6 +165,7 @@ public class Haus {
     
     private void kampf()
     {
+        System.out.println("\n|---------- Kampf-Arena ----------|\n");
         arena.initializeFight(penner);
     }
     
