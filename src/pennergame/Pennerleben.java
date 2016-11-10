@@ -13,14 +13,15 @@ import java.util.Random;
  */
 class Pennerleben {
     //Objekte
-    private Random r = new Random();
+    private Random r;
     private Penner penner;
-    private Arena arena;
-    private Haus haus;
-    private Read read = new Read();
+    private Read read;
+    private Arena street;
         
     public Pennerleben(Penner penner){
         this.penner = penner;
+        read = new Read();
+        r = new Random();
     }
     
     public void intro()
@@ -81,7 +82,7 @@ class Pennerleben {
             totalfps += fps;
             if (rnd(10) == 1) // wenn 1 ist ist Kampf
             {
-                arena = new Arena();
+                street = new Arena();
                 pennerKampf();
             }
             System.out.printf("\n%d. Stunde: %d PF\n", i + 1, fps);
@@ -98,7 +99,7 @@ class Pennerleben {
             int zahl = read.zahl();
             if (zahl == 1){    //angriff
                 penner.setHp(50);
-                arena.inizalizeFreizeitKampf(penner); 
+                street.inizalizeFreizeitKampf(penner); 
             }
             else
             {
@@ -108,7 +109,7 @@ class Pennerleben {
         else{   //agressieve
             aggressivePenner();
             penner.setHp(50);
-            arena.inizalizeFreizeitKampf(penner);    //Andere Methode weil das "ein wilder penner namens ..." nicht sein darf
+            street.inizalizeFreizeitKampf(penner);    //Andere Methode weil das "ein wilder penner namens ..." nicht sein darf
         }
     }
             
@@ -121,7 +122,7 @@ class Pennerleben {
     
     public String aggressivePenner(){
         String[] namen = {
-            "Ein Penner springt aus den Busch und will Pfandflaschen stehlen. Du hast in als Hunnensohn bezeichnet und er macht sich kampfbereit\n",   // muss man angreifen
+            "Ein Penner springt aus den Busch und will dir PF stehlen. Du hast ihn als Hunnensohn bezeichnet und er macht sich kampfbereit\n",   // muss man angreifen
             "Du und ein anderer Penner haben Gleichzeitig eine Pfandflasche gefunden! Ihr streitet euch um die Pfandflasche und es entsteht ein Krieg\n",  //beim verlieren verliert man 10% der hauptpfandflaschen
             "Du hast einen Penner kennengelernt der sich CostaGay nennt aber anderst heist. Wegen den Namen hast du ihn so sehr ausgelacht, dass er einen kampf auffordert!\n",
         };

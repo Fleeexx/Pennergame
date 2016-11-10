@@ -61,12 +61,13 @@ public class Haus {
                 shop();
             }
             else if (eingabe == 3){
-                if (!penner.getFreizeitIntro()){
+                if (leben == null)
+                {
                     leben = new Pennerleben(penner);
                     leben.intro();
-                    penner.setFreizeitIntro(true);
                 }
-                else{
+                else
+                {
                     leben.start();
                 }
             }

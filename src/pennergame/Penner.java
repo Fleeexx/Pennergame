@@ -14,13 +14,11 @@ import java.util.Vector;
 public class Penner {
     
     private String name;
-    private boolean freizeitIntro;
     private double hp;
     private double MAX_HP;
     private int level;
     private int xp;
     private int money;
-    private Boolean spezialschadenBekomen;
     private Vector<Waffe> inventar = new Vector();
 
 
@@ -31,7 +29,6 @@ public class Penner {
         MAX_HP = level * 0.25 * 400;
         hp = MAX_HP;
         xp = 0;
-        freizeitIntro = false;
     }
     
     public Penner(String name, int level)
@@ -127,12 +124,6 @@ public class Penner {
     
     public void addInventar(Waffe o) {
         inventar.add(o);
-    }
-    public boolean getFreizeitIntro(){
-        return freizeitIntro;
-    }
-    public void setFreizeitIntro(boolean freizeitIntro){
-        this.freizeitIntro = freizeitIntro;
     }
     
 }
