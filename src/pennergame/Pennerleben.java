@@ -18,64 +18,76 @@ class Pennerleben {
     private Arena arena;
     private Haus haus;
     private Read read = new Read();
-    
-    private int zeit;
-    private int pf;
         
     public Pennerleben(Penner penner){
         this.penner = penner;
     }
     
-    public void intro(){
-        System.out.print("\n|----------- Pennerleben -----------|\n");
-        System.out.printf("Hallo %s! Ich bins wieder! Guenther.\nDu willst jetzt zu den Pennern gehen aber zuerst muss ich dier diese Welt erklähren!\n", penner.getName());
-        System.out.print("Du bist in dieser Welt als Penner aufgewachsen und das wird sich nicht aendern! Deswegen bist du gerade im freien und kannst Pf sammeln gehen!\n");
-        System.out.print("Je länger du drausen bleibst, desto mehr kannst du finden. \nAber aufpassen! Dies ist ein wichtiger Rat von Guenther! Du kannst auf friedliche oder aggressive Penner treffen!\n");
-        System.out.print("|------------- Intro zuende ----------|\n\n\n");
+    public void intro()
+    {
+        System.out.print("\n|----------- Intro -----------|\n");
+        System.out.printf("Oh! Hallo %s! Ich bins wieder, Guenther.\nWie ich sehe willst du auch mal was anderes machen ausser kaempfen.\n", penner.getName());
+        System.out.print("\nWie waerts denn wenn wir ein paar PF sammeln gehen?\nEingabe: (j/n) j\nAlles klar! Ich erklaer dir kurz wie das funktioniert.\n");
+        System.out.print("Je laenger du draussen bleibst, desto mehr kannst du finden. \nAber aufpassen! Dies ist ein wichtiger Rat von Guenther!\nDu bist nicht allein da draussen..");
+        System.out.print("\n|-----------------------------|\n\n\n");
         start();
     }
     
-    public void start(){
-         fragenWieLange();  // suchsstunden holen
-         sucheGehen();
-         
+    public void start()
+    {
+        System.out.print("\n|----------- Pennerleben -----------|\n");
+        startTrip(askHowLong());
+        System.out.print("\n|-----------------------------------|\n\n\n");
     }
     
-    public void fragenWieLange(){
-        System.out.print("\n|----------- Pennerleben -----------|\n");
+    public int askHowLong(){
         boolean ende = false;
-        while (!ende)
-            System.out.print("Wie lange bleibst du?\n[1] 1 Stunde\n[2] 2 Stunden\n[3] 5 Sunden\n[4] 10 Stunden\n");
-            int zahl = read.zahl();
-            if(zeit == 1){
+        int zeit;
+        do
+        {
+            System.out.print("Wie lange bleibst du?\n[1] 1 Stunde\n[2] 2 Stunden\n[3] 5 Sunden\n[4] 10 Stunden\nEingabe: ");
+            zeit = read.zahl();
+            if(zeit == 1)
+            {
                 zeit = 1;
                 ende = true;
             }
-            else if(zeit == 2){
+            else if(zeit == 2)
+            {
                 zeit = 2;
                 ende = true;
             }
-            else if(zeit == 3){
+            else if(zeit == 3)
+            {
                 zeit = 5;
                 ende = true;
             }
-            else{
+            else if (zeit == 4)
+            {
                 zeit = 10;
                 ende = true;
             }
+        } while(ende == false);
+        return zeit;
     }
     
-    public void sucheGehen(){
-        int flascheProStunde;
-        pf = 0;
-        for(int i = 0; i < zeit; i++){    //jede Stunde durchgehen
-            flascheProStunde = rnd(15);           //pro stunde kann man 1 - 15 pf finden
-            if (rnd(10) == 1){   //wenn 1 ist ist Kampf
+    public void startTrip(int zeit)
+    {
+        int fps;
+        int totalfps = 0;
+        for(int i = 0; i < zeit; i++)
+        {
+            fps = rnd(15);
+            totalfps += fps;
+            if (rnd(10) == 1) // wenn 1 ist ist Kampf
+            {
                 arena = new Arena();
                 pennerKampf();
             }
-            System.out.printf("%d. Stunde: %d!",i, flascheProStunde);
-            pf = pf + flascheProStunde;
+            System.out.printf("\n%d. Stunde: %d PF\n", i + 1, fps);
+            penner.addMoney(fps);
+            System.out.printf("Aktuelle PF-Anzahl: %d\n", penner.getMoney());
+            System.out.printf("\nGesamte Anzahl gesammelter PF: %d", totalfps);
         }
     }
     
@@ -88,7 +100,8 @@ class Pennerleben {
                 penner.setHp(50);
                 arena.inizalizeFreizeitKampf(penner); 
             }
-            else{
+            else
+            {
                 System.out.print("Du gehst weiter auf die Suche!\n");
             }
         }
@@ -115,7 +128,7 @@ class Pennerleben {
         return namen[rnd(namen.length - 1)];
     }
     
-    public void nachHauseOderNicht(){
+    /*public void nachHauseOderNicht(){
         System .out.printf("Du hast &d Pfandflaschen gefunden!\n willst du nach Hause gehen oder noch weiter rummluemmeln?\n[1] soffort nach Hause!\n[2] lieber noch ne Runde machen\nEingabe: ", pf);
         int zahl = read.zahl();
         if (zahl == 1){
@@ -126,10 +139,11 @@ class Pennerleben {
         else{
             start();
         }
-    }  
+    }*/
     
-    public int rnd(int i){
-        return r.nextInt() + 1;
+    public int rnd(int i)
+    {
+        return r.nextInt(i) + 1;
     }
             
 }
