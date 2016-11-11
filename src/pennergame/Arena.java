@@ -39,7 +39,7 @@ public class Arena {
         Boolean r = false;
         this.spieler = spieler;
         bot = new Penner(getRndName());
-        System.out.printf("\nEin wilder Penner namens %s ist aufgetaucht!\nBitte waehle eine Waffe mit der du kaempfen moechtest!\n", bot.getName());
+        System.out.printf("\nEin wilder Penner namens %s ist aufgetaucht!\nBitte wähle eine Waffe mit der du kämpfen möchtest!\n", bot.getName());
         spieler.showInventar();
         do {
             System.out.print("Eingabe: ");
@@ -50,7 +50,7 @@ public class Arena {
             }
         } while(r == false);
         spieler_waffe = (Waffe) spieler.getInventar().get(waffenslot);
-        System.out.printf("Waffe %s (Level: %d) ausgewaehlt!\nMach dich bereit fuer die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
+        System.out.printf("Waffe %s (Level: %d) ausgewählt!\nMach dich bereit für die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
         bot_waffe = getWaffe(spieler_waffe);
         startFight();
         spieler.setHp(50);
@@ -60,7 +60,7 @@ public class Arena {
     {
         String[] namen = {
             "Olaf",
-            "Guenther",
+            "Günther",
             "Vladimir",
             "Kuen Penner",
             "Vlad",
@@ -128,12 +128,12 @@ public class Arena {
         //int xp = spieler.getLevel() * ;
         if (bot.getHp() <= 0)
         {
-            System.out.printf("\n%s wurde besiegt!\nDu erhaelst %d PF\n",bot.getName(), reward);
+            System.out.printf("\n%s wurde besiegt!\nDu erhälst %d PF\n",bot.getName(), reward);
             spieler.addMoney(reward);
         }
         else
         {
-            System.out.printf("\nDu wurdest besiegt!\nDu verlierst waehrend du fluechtest %d PF\n", reward / 2);
+            System.out.printf("\nDu wurdest besiegt!\nDu verlierst während du flüchtest %d PF\n", reward / 2);
             spieler.addMoney((reward / 2) * -1);
         }
     }
@@ -182,7 +182,7 @@ public class Arena {
     
     private Attacke getPlayerAttacke()
     {
-        System.out.println("\nMit welcher Attacke moechten Sie angreifen?");
+        System.out.println("\nMit welcher Attacke möchten Sie angreifen?");
         spieler_waffe.showWeaponAttacks();
         int attackenslot = -1;
         Boolean r = false;

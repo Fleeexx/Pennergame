@@ -27,9 +27,9 @@ class Pennerleben {
     public void intro()
     {
         System.out.print("\n|----------- Intro -----------|\n");
-        System.out.printf("Oh! Hallo %s! Ich bins wieder, Guenther.\nWie ich sehe willst du auch mal was anderes machen ausser kaempfen.\n", penner.getName());
-        System.out.print("\nWie waerts denn wenn wir ein paar PF sammeln gehen?\nEingabe: (j/n) j\nAlles klar! Ich erklaer dir kurz wie das funktioniert.\n");
-        System.out.print("Je laenger du draussen bleibst, desto mehr kannst du finden. \nAber aufpassen! Dies ist ein wichtiger Rat von Guenther!\nDu bist nicht allein da draussen..");
+        System.out.printf("Oh! Hallo %s! Ich bins wieder, Günther.\nWie ich sehe willst du auch mal was anderes machen ausser kämpfen.\n", penner.getName());
+        System.out.print("\nWie wärts denn wenn wir ein paar PF sammeln gehen?\nEingabe: (j/n) j\nAlles klar! Ich erklär dir kurz wie das funktioniert.\n");
+        System.out.print("Je länger du draussen bleibst, desto mehr kannst du finden. \nAber aufpassen! Dies ist ein wichtiger Rat von Günther!\nDu bist nicht allein da draussen..");
         System.out.print("\n|-----------------------------|\n\n\n");
         start();
     }

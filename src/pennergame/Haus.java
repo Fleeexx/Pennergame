@@ -50,7 +50,7 @@ public class Haus {
             if (penner == null)
                 pennerprofil();
             
-            System.out.print("\n\n[1] Mein Penner\n[2] Shop\n[3] Raus zu die Penner\n[4] Kämpfen\n[0] Exit\nEingabe: ");
+            System.out.print("\n\n[1] Mein Penner\n[2] Shop\n[3] Wildnis\n[4] Kämpfen\n[0] Exit\nEingabe: ");
             int eingabe = read.zahl();
             if (eingabe == 1) // Mein Penner
             {
@@ -86,12 +86,12 @@ public class Haus {
     {
         if (penner == null)
         {
-            System.out.print("Na da schau einer her!\nHallo und herzlich willkommen in unserem Unterschlupf!\nDu bist herzlich eingeladen bei uns zu bleiben da wir noch einige gute Kaempfer brauchen.\nVerraetst du mir deinen Namen?\n[Dein Name] ");
+            System.out.print("Na da schau einer her!\nHallo und herzlich willkommen in unserem Unterschlupf!\nDu bist herzlich eingeladen bei uns zu bleiben da wir noch einige gute Kämpfer brauchen.\nVerrätst du mir deinen Namen?\n[Dein Name] ");
             String eingabe = read.zeichen();
             penner = new Penner(eingabe);
-            System.out.printf("Alles klar! Du heisst also %s.\nMein Name ist uebrigens Guenther. Ich zeige dir wie hier alles bei uns funktioniert.\n", penner.getName());
+            System.out.printf("Alles klar! Du heisst also %s.\nMein Name ist übrigens Günther. Ich zeige dir wie hier alles bei uns funktioniert.\n", penner.getName());
             penner.showPennerStats();
-            System.out.println("Hier bekommst du erstmal ein paar Pfandflaschen (15). Pfandflaschen(PF) sind unsere Waehrug.\nDu kannst sie gegen Ausruestung im Shop eintauschen.\n\nDamit du nun aber kaempfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Faust)");
+            System.out.println("Hier bekommst du erstmal ein paar Pfandflaschen (15). Pfandflaschen(PF) sind unsere Währug.\nDu kannst sie gegen Ausrüstung im Shop eintauschen.\n\nDamit du nun aber kämpfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Faust)");
             penner.addMoney(15);
             Boolean r = false;
             do
@@ -99,12 +99,12 @@ public class Haus {
                 shop();
                 if (penner.getInventar().isEmpty())
                 {
-                    System.out.println("\nOhne eine Waffe kannst du nicht kaempfen!");
+                    System.out.println("\nOhne eine Waffe kannst du nicht kämpfen!");
                 }
                 else
                 {
                     r = true;
-                    System.out.println("\nDa du dir nun deine Waffe gekauft hast wird es nun Zeit fuer deinen ersten Kampf!\n");
+                    System.out.println("\nDa du dir nun deine Waffe gekauft hast wird es nun Zeit für deinen ersten Kampf!\n");
                 }
             } while(r == false);
             kampf();
