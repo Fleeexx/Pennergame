@@ -89,24 +89,25 @@ public class Waffe {
             if (attacken.get(i).getSpezialschadenName() != null)
             {
                 System.out.printf("(%d) Spezialschaden: %s\n", i + 1,attacken.get(i).getSpezialschadenName());
-                System.out.printf("(%d) Spezial-Damage: %.0f\045\n", i + 1,(attacken.get(i).getSpezialschaden()) * 100, "%");
+                System.out.printf("(%d) Spezial-Damage: %.0f%s\n", i + 1,(attacken.get(i).getSpezialschaden()) * 100, "%");
             }
             System.out.println("");
         }
         System.out.print("|---------------------------------|\n");
     }
     
-    public Vector getAttacken()
-    {
+    public Vector getAttacken() {
         return attacken;
     }
     
     public String getName() {
         return name;
     }
+    
     public void setName(String name) {
         this.name = name;
     }
+    
     public int getKosten() {
         return kosten;
     }
@@ -114,13 +115,17 @@ public class Waffe {
     public void setKosten(int kosten) {
         this.kosten = kosten;
     }
+    
     public int getLvl() {
         return lvl;
     }
+    
     public void setLvl(int lvl) {
         this.lvl = lvl;
     }
+    
     public double getDamage() {
         return damage;
     }
+    
 }

@@ -82,9 +82,9 @@ class Pennerleben {
         {
             fps = rnd(15);
             totalfps += fps;
-            if (rnd(10) == 1) // wenn rnd = 1 dann wird ein Kampf gestartet
+            if (rnd(10) == 5) // wenn rnd = 1 dann wird ein Kampf gestartet
             {
-                System.out.println("\n|---------- Steet-Fight ----------|\n");
+                System.out.println("\n\n\n|---------- Steet-Fight ----------|\n");
                 streetFight();
             }
             System.out.printf("\n%d. Stunde: %d PF\n", i + 1, fps);
@@ -100,11 +100,12 @@ class Pennerleben {
     {
         if (rnd(2) == 1) // Angreifen: Optional
         {
-            getFriendlyPennerMessage();
+            String botname = street.getRndName();
+            System.out.printf(getFriendlyPennerMessage(), botname);
             String eingabe = read.zeichen();
             if (eingabe.toUpperCase().equals("J") || eingabe.toUpperCase().equals("JA"))
             {
-                street.initializeFightStreet(penner); // Angriff
+                street.initializeFight(penner, botname); // Angriff
             }
             else
             {
@@ -114,14 +115,14 @@ class Pennerleben {
         else // Angreifen: Muss
         {
             getAngryPennerMessage();
-            street.initializeFightStreet(penner); // Angriff
+            street.initializeFight(penner, street.getRndName()); // Angriff
         }
     }
     
     private String getFriendlyPennerMessage()
     {
         String[] msg = {
-            "Du siehst einen pädophilen Penner der sich hinter einem Baum versteckt und kleine Kinder beobachtet.\nDu erkennst sein Gesicht und er sieht aus wie David!\nMoechtest du ihn angreifen?"
+            "Du siehst einen pädophilen Penner der sich hinter einem Baum versteckt und kleine Kinder beobachtet.\nDu erkennst sein Gesicht und er sieht aus wie %s!\nMoechtest du ihn angreifen?\n"
         };
         return msg[rnd(msg.length) - 1];
     }
@@ -145,19 +146,6 @@ class Pennerleben {
             "Du hast einen Penner kennengelernt der sich CostaGay nennt aber anderst heist. Wegen den Namen hast du ihn so sehr ausgelacht, dass er einen kampf auffordert!\n",
         };
         return namen[rnd(namen.length - 1)];
-    }*/
-    
-    /*public void nachHauseOderNicht(){
-        System .out.printf("Du hast &d Pfandflaschen gefunden!\n willst du nach Hause gehen oder noch weiter rummluemmeln?\n[1] soffort nach Hause!\n[2] lieber noch ne Runde machen\nEingabe: ", pf);
-        int zahl = read.zahl();
-        if (zahl == 1){
-            System.out.print("|------------- Nach Hause ----------|\n\n\n");
-            haus = new Haus();
-            haus.menu();
-        }
-        else{
-            start();
-        }
     }*/
     
     public int rnd(int i)

@@ -45,7 +45,7 @@ public class Haus {
             
             shop_faust = new Faust("Betonwatsche", 10, 10, 1); // Instanzierung
             shop_messer = new Messer("Butterfly", 20, 15, 1);
-            shop_handy = new Handy("Modelle", 100, 30,1);
+            shop_handy = new Handy("Modelle", 100, 30, 1);
             
             // Menü
             
@@ -102,7 +102,6 @@ public class Haus {
                     System.out.println("\nDa du dir nun deine Waffe gekauft hast wird es nun Zeit für deinen ersten Kampf!\n");
                 }
             } while(r == false);
-            System.out.println("\n|---------- Kampf-Arena ----------|\n");
             kampf();
         }
         else
@@ -128,7 +127,8 @@ public class Haus {
                 {
                     cart = shop_faust;
                 }
-                else if (eingabe == 1){
+                else if (eingabe == 1)
+                {
                     cart = shop_messer;
                 }
                 else
@@ -178,7 +178,9 @@ public class Haus {
     private void kampf()
     {
         System.out.println("\n|---------- Kampf-Arena ----------|\n");
-        arena.initializeFight(penner);
+        String botname = arena.getRndName();
+        System.out.printf("\nEin wilder Penner namens %s ist aufgetaucht!\n", botname);
+        arena.initializeFight(penner, botname);
     }
     
     

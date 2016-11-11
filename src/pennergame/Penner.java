@@ -42,7 +42,7 @@ public class Penner {
     
     public void showPennerStats()
     {
-        System.out.printf("\n|---------- Mein Penner ----------|\nName: %s\nLevel: %d\nXP: %d/100\nPF: %d\n|---------------------------------|\n", name, level, xp, money);
+        System.out.printf("\n|---------- Mein Penner ----------|\nName: %s\nHP: %.2f\nLevel: %d\nXP: %d/100\nPF: %d\n|---------------------------------|\n", name, hp, level, xp, money);
         showInventar();
     }
     

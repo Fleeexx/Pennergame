@@ -49,15 +49,19 @@ public class Attacke {
     public String getName() {
         return name;
     }
+    
     public double getGenauigkeit() {
         return genauigkeit;
     }
+    
     public double getZusatzschaden() {
         return zusatzschaden;
     }
+    
     public String getSpezialschadenName() {
         return spezialschadenName;
     }
+    
     public double getSpezialschaden() {
         return spezialschaden;
     }

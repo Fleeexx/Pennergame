@@ -33,13 +33,13 @@ public class Arena {
         read = new Read();
     }
     
-    public void initializeFight(Penner spieler)
+    public void initializeFight(Penner spieler, String botname)
     {
         int waffenslot = -1;
         Boolean r = false;
         this.spieler = spieler;
-        bot = new Penner(getRndName());
-        System.out.printf("\nEin wilder Penner namens %s ist aufgetaucht!\nBitte wähle eine Waffe mit der du kämpfen möchtest!\n", bot.getName());
+        bot = new Penner(botname);
+        System.out.println("\nBitte wähle eine Waffe mit der du kämpfen möchtest!\n");
         spieler.showInventar();
         do {
             System.out.print("Eingabe: ");
@@ -53,32 +53,10 @@ public class Arena {
         System.out.printf("Waffe %s (Level: %d) ausgewählt!\nMach dich bereit für die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
         bot_waffe = getWaffe(spieler_waffe);
         startFight();
-        spieler.setHp(50);
-    }
-    public void initializeFightStreet(Penner spieler)
-    {
-        int waffenslot = -1;
-        Boolean r = false;
-        this.spieler = spieler;
-        bot = new Penner(getRndName());
-        System.out.printf("\nDu kämpfst jetzt gegen %s!\n", bot.getName());
-        spieler.showInventar();
-        do {
-            System.out.print("Eingabe: ");
-            waffenslot = read.zahl() - 1;
-            if (waffenslot <= spieler.getInventar().size() && waffenslot >= 0)
-            {
-                r = true;
-            }
-        } while(r == false);
-        spieler_waffe = (Waffe) spieler.getInventar().get(waffenslot);
-        System.out.printf("Waffe %s (Level: %d) ausgewählt!\nMach dich bereit für die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
-        bot_waffe = getWaffe(spieler_waffe);
-        startFight();
-        spieler.setHp(50);
+        spieler.setHp(spieler.getMAX_HP());
     }
     
-    private String getRndName()
+    public String getRndName()
     {
         String[] namen = {
             "Olaf",
@@ -196,7 +174,7 @@ public class Arena {
     
     private Attacke getPlayerAttacke()
     {
-        System.out.println("\nMit welcher Attacke möchten Sie angreifen?");
+        System.out.println("\nMit welcher Attacke möchtest du angreifen?");
         spieler_waffe.showWeaponAttacks();
         int attackenslot = -1;
         Boolean r = false;
