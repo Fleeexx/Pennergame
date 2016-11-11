@@ -23,6 +23,7 @@ public class Haus {
     
     private Faust shop_faust;
     private Messer shop_messer;
+    private Handy shop_handy;
     
     // Do werd jeweils oan verfügbars Woffenobjekt deklariert welches donn noch jedem Kompf editiert werd
     
@@ -44,6 +45,7 @@ public class Haus {
             
             shop_faust = new Faust("Betonwatsche", 10, 10, 1); // Instanzierung
             shop_messer = new Messer("Butterfly", 20, 15, 1);
+            shop_handy = new Handy("Modelle", 100, 30,1);
             
             // Menü
             
@@ -84,7 +86,7 @@ public class Haus {
             penner = new Penner(eingabe);
             System.out.printf("Alles klar! Du heisst also %s.\nMein Name ist übrigens Günther. Ich zeige dir wie hier alles bei uns funktioniert.\n", penner.getName());
             penner.showPennerStats();
-            System.out.println("Hier bekommst du erstmal ein paar Pfandflaschen (15). Pfandflaschen(PF) sind unsere Währug.\nDu kannst sie gegen Ausrüstung im Shop eintauschen.\n\nDamit du nun aber kämpfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Faust)");
+            System.out.println("Hier bekommst du erstmal ein paar Pfandflaschen (15). Pfandflaschen(PF) sind unsere Währung.\nDu kannst sie gegen Ausrüstung im Shop eintauschen.\n\nDamit du nun aber kämpfen kannst, brauchst du erstmal eine Waffe.\nDiese kannst du dir im Shop kaufen ([0] Faust)");
             penner.addMoney(15);
             Boolean r = false;
             do
@@ -120,15 +122,18 @@ public class Haus {
             int eingabe = read.zahl();
             if (eingabe == 1)
             {
-                System.out.print("\n\n[0] Faust\n[1] Messer\nEingabe: ");
+                System.out.print("\n\n[0] Faust\n[1] Messer\n[2] Handy\nEingabe: ");
                 eingabe = read.zahl();
                 if (eingabe == 0)
                 {
                     cart = shop_faust;
                 }
+                else if (eingabe == 1){
+                    cart = shop_messer;
+                }
                 else
                 {
-                    cart = shop_messer;
+                    cart = shop_handy;
                 }
                 cart.showWeaponStats();
                 System.out.println("\nKaufen? (j/n)");

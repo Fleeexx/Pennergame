@@ -104,7 +104,7 @@ class Pennerleben {
             String eingabe = read.zeichen();
             if (eingabe.toUpperCase().equals("J") || eingabe.toUpperCase().equals("JA"))
             {
-                street.initializeFight(penner); // Angriff
+                street.initializeFightStreet(penner); // Angriff
             }
             else
             {
@@ -114,23 +114,21 @@ class Pennerleben {
         else // Angreifen: Muss
         {
             getAngryPennerMessage();
-            street.initializeFight(penner); // Angriff
+            street.initializeFightStreet(penner); // Angriff
         }
     }
     
     private String getFriendlyPennerMessage()
     {
         String[] msg = {
-            "Du siehst einen pädophilen Penner der sich hinter einem Baum versteckt und kleine Kinder beobachtet.\nDu erkennst sein Gesicht und er sieht aus wie David!\nMoechtest du ihn angreifen?",
-            "",
-            ""
+            "Du siehst einen pädophilen Penner der sich hinter einem Baum versteckt und kleine Kinder beobachtet.\nDu erkennst sein Gesicht und er sieht aus wie David!\nMoechtest du ihn angreifen?"
         };
         return msg[rnd(msg.length) - 1];
     }
     
     private String getAngryPennerMessage()
     {
-        return "do some shit here";
+        return "Ein Penner hält dich fest und will eine PF stehlen!\n Somit entsteht ein Kampf!\n";
     }
             
     /*public String friedlichePenner(){

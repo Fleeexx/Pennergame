@@ -55,6 +55,28 @@ public class Arena {
         startFight();
         spieler.setHp(50);
     }
+    public void initializeFightStreet(Penner spieler)
+    {
+        int waffenslot = -1;
+        Boolean r = false;
+        this.spieler = spieler;
+        bot = new Penner(getRndName());
+        System.out.printf("\nDu kämpfst jetzt gegen %s!\n", bot.getName());
+        spieler.showInventar();
+        do {
+            System.out.print("Eingabe: ");
+            waffenslot = read.zahl() - 1;
+            if (waffenslot <= spieler.getInventar().size() && waffenslot >= 0)
+            {
+                r = true;
+            }
+        } while(r == false);
+        spieler_waffe = (Waffe) spieler.getInventar().get(waffenslot);
+        System.out.printf("Waffe %s (Level: %d) ausgewählt!\nMach dich bereit für die erste Runde.", spieler_waffe.getName(), spieler_waffe.getLvl());
+        bot_waffe = getWaffe(spieler_waffe);
+        startFight();
+        spieler.setHp(50);
+    }
     
     private String getRndName()
     {
@@ -62,7 +84,6 @@ public class Arena {
             "Olaf",
             "Günther",
             "Vladimir",
-            "Kuen Penner",
             "Vlad",
             "Rohrer",
             "Kuen Penner",
@@ -70,30 +91,23 @@ public class Arena {
             "Reinhold",
             "Rizz",
             "Martl",
-            "Kuen Penner",
             "Hons",
             "Garbur",
-            "Kuen Penner",
             "Etl",
             "Trump",
-            "Kuen Penner",
             "Clinton",
             "Baruck Obuma",
             "Spodermen",
             "Luis Durnwalder",
-            "Kuen Penner",
             "Motschuner Peppn",
-            "Kuen Penner",
             "Gilette Abdi",
             "Murat",
             "Osama",
             "Smith",
-            "Kuen Penner",
             "Loop",
             "Herr der Illuminaten",
             "xX3Illuminati3Xx",
             "Billiboy Gates",
-            "Kuen Penner"
         };
         return namen[rnd(namen.length) - 1];
     }
