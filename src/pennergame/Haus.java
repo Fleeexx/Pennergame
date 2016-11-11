@@ -60,16 +60,9 @@ public class Haus {
             {
                 shop();
             }
-            else if (eingabe == 3){
-                if (leben == null)
-                {
-                    leben = new Pennerleben(penner);
-                    leben.intro();
-                }
-                else
-                {
-                    leben.start();
-                }
+            else if (eingabe == 3)
+            {
+                pennerleben();
             }
             else if (eingabe == 4) // Arena
             {
@@ -107,6 +100,7 @@ public class Haus {
                     System.out.println("\nDa du dir nun deine Waffe gekauft hast wird es nun Zeit für deinen ersten Kampf!\n");
                 }
             } while(r == false);
+            System.out.println("\n|---------- Kampf-Arena ----------|\n");
             kampf();
         }
         else
@@ -161,6 +155,19 @@ public class Haus {
                 r = false;
             }
         } while (r);
+    }
+    
+    private void pennerleben()
+    {
+        if (leben == null)
+        {
+            leben = new Pennerleben(penner);
+            leben.intro();
+        }
+        else
+        {
+            leben.start();
+        }
     }
     
     private void kampf()

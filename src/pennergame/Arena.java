@@ -95,7 +95,7 @@ public class Arena {
             "Billiboy Gates",
             "Kuen Penner"
         };
-        return namen[rnd(namen.length - 1)];
+        return namen[rnd(namen.length) - 1];
     }
     
     private Waffe getWaffe(Waffe waffe)

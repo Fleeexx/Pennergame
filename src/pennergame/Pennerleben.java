@@ -18,9 +18,11 @@ class Pennerleben {
     private Read read;
     private Arena street;
         
-    public Pennerleben(Penner penner){
+    public Pennerleben(Penner penner)
+    {
         this.penner = penner;
         read = new Read();
+        street = new Arena();
         r = new Random();
     }
     
@@ -41,7 +43,7 @@ class Pennerleben {
         System.out.print("\n|-----------------------------------|\n\n\n");
     }
     
-    public int askHowLong(){
+    private int askHowLong(){
         boolean ende = false;
         int zeit;
         do
@@ -72,7 +74,7 @@ class Pennerleben {
         return zeit;
     }
     
-    public void startTrip(int zeit)
+    private void startTrip(int zeit)
     {
         int fps;
         int totalfps = 0;
@@ -82,8 +84,8 @@ class Pennerleben {
             totalfps += fps;
             if (rnd(10) == 1) // wenn rnd = 1 dann wird ein Kampf gestartet
             {
-                street = new Arena();
-                pennerKampf();
+                System.out.println("\n|---------- Steet-Fight ----------|\n");
+                streetFight();
             }
             System.out.printf("\n%d. Stunde: %d PF\n", i + 1, fps);
             penner.addMoney(fps);
@@ -94,25 +96,41 @@ class Pennerleben {
     
     // STREETFIGHT
     
-    public void pennerKampf() //wahl zwischen netten oder agressieven Penner
+    private void streetFight()
     {
-        if (rnd(2) == 1) //friedlicher Penner
+        if (rnd(2) == 1) // Angreifen: Optional
         {
-            //friedlichePenner();
-            System.out.print("[1] Ja\n[2] Nein\n Eingabe: ");
-            int zahl = read.zahl();
-            if (zahl == 1){    //angriff
-                street.initializeFight(penner); 
+            getFriendlyPennerMessage();
+            String eingabe = read.zeichen();
+            if (eingabe.toUpperCase().equals("J") || eingabe.toUpperCase().equals("JA"))
+            {
+                street.initializeFight(penner); // Angriff
             }
             else
             {
                 System.out.print("Du gehst weiter auf die Suche!\n");
             }
         }
-        else{   //agressieve
-            //aggressivePenner();
-            street.initializeFight(penner);    //Andere Methode weil das "ein wilder penner namens ..." nicht sein darf
+        else // Angreifen: Muss
+        {
+            getAngryPennerMessage();
+            street.initializeFight(penner); // Angriff
         }
+    }
+    
+    private String getFriendlyPennerMessage()
+    {
+        String[] msg = {
+            "Du siehst einen pädophilen Penner der sich hinter einem Baum versteckt und kleine Kinder beobachtet.\nDu erkennst sein Gesicht und er sieht aus wie David!\nMoechtest du ihn angreifen?",
+            "",
+            ""
+        };
+        return msg[rnd(msg.length) - 1];
+    }
+    
+    private String getAngryPennerMessage()
+    {
+        return "do some shit here";
     }
             
     /*public String friedlichePenner(){
